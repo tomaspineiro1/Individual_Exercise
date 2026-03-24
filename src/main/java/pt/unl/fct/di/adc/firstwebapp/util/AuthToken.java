@@ -8,16 +8,18 @@ public class AuthToken {
 	
 	public String username;
 	public String tokenID;
-	public long creationData;
-	public long expirationData;
+	public String role;
+	public long issuedAt;
+	public long expiresAt;
 	
 	public AuthToken() { }
 	
-	public AuthToken(String username) {
+	public AuthToken(String username, String role) {
 		this.username = username;
 		this.tokenID = UUID.randomUUID().toString();
-		this.creationData = System.currentTimeMillis();
-		this.expirationData = this.creationData + EXPIRATION_TIME;
+		this.role     = role;
+		this.issuedAt = System.currentTimeMillis();
+		this.expiresAt = this.issuedAt + EXPIRATION_TIME;
 	}
 	
 }
