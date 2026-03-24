@@ -62,7 +62,6 @@ public class CreateAccountResource {
             else {
                 user = Entity.newBuilder(userKey)
                         .set("user_pwd", DigestUtils.sha512Hex(request.input.password))
-                        .set("user_email", request.input.email)
                         .set("user_phone",   request.input.phone)
                         .set("user_address", request.input.address)
                         .set("user_role",    request.input.role)
