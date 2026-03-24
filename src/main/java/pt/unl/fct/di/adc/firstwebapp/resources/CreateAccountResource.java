@@ -9,6 +9,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.Produces;
 
 import com.google.gson.Gson;
 import com.google.cloud.Timestamp;
@@ -19,6 +20,7 @@ import com.google.cloud.datastore.Transaction;
 import com.google.cloud.datastore.DatastoreOptions;
 
 import pt.unl.fct.di.adc.firstwebapp.util.CreateAccountRequest;
+import pt.unl.fct.di.adc.firstwebapp.util.ErrorCodes;
 import pt.unl.fct.di.adc.firstwebapp.util.RestResponse;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,15 +28,8 @@ import java.util.Map;
 
 
 @Path("/createaccount")
+@Produces(MediaType.APPLICATION_JSON)
 public class CreateAccountResource {
-
-    private static final String INVALID_INPUT = "INVALID_INPUT";
-    private static final String USER_ALREADY_EXISTS = "USER_ALREADY_EXISTS";
-    private static final String INTERNAL_ERROR = "INTERNAL_ERROR";
-
-    private static final String INVALID_INPUT_MSG = "Missing or invalid fields";
-    private static final String USER_ALREADY_EXISTS_MSG = "Error in creating an account because the username already exists";
-    private static final String INTERNAL_ERROR_MSG = "Error registering user";
 
     private static final Logger LOG = Logger.getLogger(CreateAccountResource.class.getName());
     private static final Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
@@ -50,17 +45,18 @@ public class CreateAccountResource {
         LOG.fine("Attempt to register user: " + request.input.username);
 
         if(!request.input.validRegistration())
-            return Response.status(Response.Status.BAD_REQUEST).entity(g.toJson(new RestResponse(INVALID_INPUT, INVALID_INPUT_MSG)))
+            return Response.status(Response.Status.BAD_REQUEST).entity(g.toJson(new RestResponse(ErrorCodes.INVALID_INPUT, ErrorCodes.INVALID_INPUT_MSG)))
                     .build();
 
+        Transaction txn = null;
         try {
-            Transaction txn = datastore.newTransaction();
+            txn = datastore.newTransaction();
             Key userKey = datastore.newKeyFactory().setKind("User").newKey(request.input.username);
             Entity user = txn.get(userKey);
 
             if(user != null) {
                 txn.rollback();
-                return Response.status(Response.Status.CONFLICT).entity(g.toJson(new RestResponse(USER_ALREADY_EXISTS, USER_ALREADY_EXISTS_MSG)))
+                return Response.status(Response.Status.CONFLICT).entity(g.toJson(new RestResponse(ErrorCodes.USER_ALREADY_EXISTS, ErrorCodes.USER_ALREADY_EXISTS_MSG)))
                         .build();
             }
             else {
@@ -75,17 +71,22 @@ public class CreateAccountResource {
                 txn.put(user);
                 txn.commit();
                 LOG.info("User registered " + request.input.username);
-                return Response.ok().build();
+
+                Map<String, String> responseData = new HashMap<>();
+                responseData.put("username", request.input.username);
+                responseData.put("role", request.input.role);
+
+                return Response.ok(g.toJson(new RestResponse("success", responseData))).build();
             }
         } catch (Exception e) {
             LOG.severe("Error registering user: " + e.getMessage());
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(g.toJson(
-                            new RestResponse(INTERNAL_ERROR, INTERNAL_ERROR_MSG)
+                            new RestResponse(ErrorCodes.INTERNAL_ERROR, ErrorCodes.INTERNAL_ERROR_MSG)
                     ))
                     .build();
         }
         finally {
-            // No need to rollback here, as we only have one transaction and it will be automatically rolled back if not committed.
+            if (txn != null && txn.isActive()) txn.rollback();
         }
     }
 }
