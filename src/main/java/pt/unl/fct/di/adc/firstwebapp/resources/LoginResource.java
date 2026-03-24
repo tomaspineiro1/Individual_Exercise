@@ -63,6 +63,14 @@ public class LoginResource {
 	public Response doLogin(LoginRequestData request) {
 		LOG.fine("Login attempt: " + request.input.username);
 
+		if (request.input == null ||
+				request.input.username == null || request.input.username.isBlank() ||
+				request.input.password == null || request.input.password.isBlank()) {
+			return Response.status(Status.FORBIDDEN)
+					.entity(g.toJson(new RestResponse(ErrorCodes.INVALID_CREDENTIALS, ErrorCodes.INVALID_CREDENTIALS_MSG)))
+					.build();
+		}
+
 		// Generate automatically a key
 		Key logKey = datastore.allocateId(
 				datastore.newKeyFactory()
