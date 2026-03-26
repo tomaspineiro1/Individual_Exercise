@@ -8,7 +8,7 @@
         <param-name>org.eclipse.jetty.containerInitializers</param-name>
             
         <param-value><![CDATA[
-    "ContainerInitializer{org.glassfish.jersey.servlet.init.JerseyServletContainerInitializer,interested=[pt.unl.fct.di.adc.firstwebapp.resources.MediaResource, pt.unl.fct.di.adc.firstwebapp.resources.ShowUsersResource, org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJsonProvider, org.glassfish.jersey.jackson.internal.DefaultJacksonJaxbJsonProvider, org.glassfish.jersey.server.ResourceConfig$WrappingResourceConfig, org.glassfish.jersey.server.ResourceConfig$RuntimeConfig, org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJaxbJsonProvider, pt.unl.fct.di.adc.firstwebapp.resources.CreateAccountResource, pt.unl.fct.di.adc.firstwebapp.resources.DeleteAccountResource, pt.unl.fct.di.adc.firstwebapp.resources.LoginResource, org.glassfish.jersey.jackson.internal.FilteringJacksonJaxbJsonProvider, org.glassfish.jersey.server.wadl.internal.WadlResource, org.glassfish.jersey.server.ResourceConfig, pt.unl.fct.di.adc.firstwebapp.resources.ComputationResource],applicable=[],annotated=[]}"]]></param-value>
+    "ContainerInitializer{org.glassfish.jersey.servlet.init.JerseyServletContainerInitializer,interested=[pt.unl.fct.di.adc.firstwebapp.resources.MediaResource, pt.unl.fct.di.adc.firstwebapp.resources.ShowUsersResource, org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJsonProvider, org.glassfish.jersey.jackson.internal.DefaultJacksonJaxbJsonProvider, org.glassfish.jersey.server.ResourceConfig$WrappingResourceConfig, org.glassfish.jersey.server.ResourceConfig$RuntimeConfig, org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJaxbJsonProvider, pt.unl.fct.di.adc.firstwebapp.resources.CreateAccountResource, pt.unl.fct.di.adc.firstwebapp.resources.DeleteAccountResource, pt.unl.fct.di.adc.firstwebapp.resources.LoginResource, pt.unl.fct.di.adc.firstwebapp.resources.ModifyAccountResource, org.glassfish.jersey.jackson.internal.FilteringJacksonJaxbJsonProvider, org.glassfish.jersey.server.wadl.internal.WadlResource, org.glassfish.jersey.server.ResourceConfig, pt.unl.fct.di.adc.firstwebapp.resources.ComputationResource],applicable=[],annotated=[]}"]]></param-value>
           
     </context-param>
       
@@ -424,9 +424,9 @@
                 
         </cookie-config>
             
-        <tracking-mode>URL</tracking-mode>
-            
         <tracking-mode>COOKIE</tracking-mode>
+            
+        <tracking-mode>URL</tracking-mode>
           
     </session-config>
       

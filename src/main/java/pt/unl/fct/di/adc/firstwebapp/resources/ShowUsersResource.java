@@ -43,8 +43,7 @@ public class ShowUsersResource {
 
 
         if (request.token == null || request.token.tokenID == null || request.token.tokenID.isBlank()) {
-            return Response.status(Status.UNAUTHORIZED)
-                    .entity(g.toJson(new RestResponse(ErrorCodes.INVALID_TOKEN, ErrorCodes.INVALID_TOKEN_MSG)))
+            return Response.ok(g.toJson(new RestResponse(ErrorCodes.INVALID_TOKEN, ErrorCodes.INVALID_TOKEN_MSG)))
                     .build();
         }
 
@@ -53,24 +52,21 @@ public class ShowUsersResource {
         Entity tokenEntity = datastore.get(tokenKey);
 
         if (tokenEntity == null) {
-            return Response.status(Status.UNAUTHORIZED)
-                    .entity(g.toJson(new RestResponse(ErrorCodes.INVALID_TOKEN, ErrorCodes.INVALID_TOKEN_MSG)))
+            return Response.ok(g.toJson(new RestResponse(ErrorCodes.INVALID_TOKEN, ErrorCodes.INVALID_TOKEN_MSG)))
                     .build();
         }
 
 
         long expiresAt = tokenEntity.getLong("expiresAt");
         if (System.currentTimeMillis() > expiresAt) {
-            return Response.status(Status.UNAUTHORIZED)
-                    .entity(g.toJson(new RestResponse(ErrorCodes.TOKEN_EXPIRED, ErrorCodes.TOKEN_EXPIRED_MSG)))
+            return Response.ok(g.toJson(new RestResponse(ErrorCodes.TOKEN_EXPIRED, ErrorCodes.TOKEN_EXPIRED_MSG)))
                     .build();
         }
 
 
         String role = tokenEntity.getString("role");
         if (!role.equals("ADMIN") && !role.equals("BOFFICER")) {
-            return Response.status(Status.UNAUTHORIZED)
-                    .entity(g.toJson(new RestResponse(ErrorCodes.UNAUTHORIZED, ErrorCodes.UNAUTHORIZED_MSG)))
+            return Response.ok(g.toJson(new RestResponse(ErrorCodes.UNAUTHORIZED, ErrorCodes.UNAUTHORIZED_MSG)))
                     .build();
         }
 
@@ -84,7 +80,6 @@ public class ShowUsersResource {
         results.forEachRemaining(user -> {
             Map<String, String> userMap = new HashMap<>();
             String username = user.getKey().getName();
-            userMap.put("userId",   username);
             userMap.put("username", username);
             userMap.put("role",     user.getString("user_role"));
             users.add(userMap);

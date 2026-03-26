@@ -66,8 +66,7 @@ public class LoginResource {
 		if (request.input == null ||
 				request.input.username == null || request.input.username.isBlank() ||
 				request.input.password == null || request.input.password.isBlank()) {
-			return Response.status(Status.FORBIDDEN)
-					.entity(g.toJson(new RestResponse(ErrorCodes.INVALID_CREDENTIALS, ErrorCodes.INVALID_CREDENTIALS_MSG)))
+			return Response.ok(g.toJson(new RestResponse(ErrorCodes.INVALID_CREDENTIALS, ErrorCodes.INVALID_CREDENTIALS_MSG)))
 					.build();
 		}
 
@@ -85,8 +84,7 @@ public class LoginResource {
 				txn.rollback();
 				// Username does not exist
 				LOG.warning("User not found: " + request.input.username);
-				return Response.status(Status.FORBIDDEN)
-						.entity(g.toJson(new RestResponse(ErrorCodes.USER_NOT_FOUND, ErrorCodes.USER_NOT_FOUND_MSG)))
+				return Response.ok(g.toJson(new RestResponse(ErrorCodes.USER_NOT_FOUND, ErrorCodes.USER_NOT_FOUND_MSG)))
 						.build();
 			}
 
@@ -95,8 +93,7 @@ public class LoginResource {
 			if (!hashedPWD.equals(DigestUtils.sha512Hex(request.input.password))) {
 				txn.rollback();
 				LOG.warning("Wrong password for: " + request.input.username);
-				return Response.status(Status.FORBIDDEN)
-						.entity(g.toJson(new RestResponse(ErrorCodes.INVALID_CREDENTIALS, ErrorCodes.INVALID_CREDENTIALS_MSG)))
+				return Response.ok(g.toJson(new RestResponse(ErrorCodes.INVALID_CREDENTIALS, ErrorCodes.INVALID_CREDENTIALS_MSG)))
 						.build();
 			}
 				// Login successful

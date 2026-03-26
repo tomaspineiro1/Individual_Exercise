@@ -44,8 +44,7 @@ public class DeleteAccountResource {
 
 
         if (request.token == null || request.token.tokenID == null || request.token.tokenID.isBlank()) {
-            return Response.status(Status.UNAUTHORIZED)
-                    .entity(g.toJson(new RestResponse(ErrorCodes.INVALID_TOKEN, ErrorCodes.INVALID_TOKEN_MSG)))
+            return Response.ok(g.toJson(new RestResponse(ErrorCodes.INVALID_TOKEN, ErrorCodes.INVALID_TOKEN_MSG)))
                     .build();
         }
 
@@ -54,31 +53,27 @@ public class DeleteAccountResource {
         Entity tokenEntity = datastore.get(tokenKey);
 
         if (tokenEntity == null) {
-            return Response.status(Status.UNAUTHORIZED)
-                    .entity(g.toJson(new RestResponse(ErrorCodes.INVALID_TOKEN, ErrorCodes.INVALID_TOKEN_MSG)))
+            return Response.ok(g.toJson(new RestResponse(ErrorCodes.INVALID_TOKEN, ErrorCodes.INVALID_TOKEN_MSG)))
                     .build();
         }
 
 
         long expiresAt = tokenEntity.getLong("expiresAt");
         if (System.currentTimeMillis() > expiresAt) {
-            return Response.status(Status.UNAUTHORIZED)
-                    .entity(g.toJson(new RestResponse(ErrorCodes.TOKEN_EXPIRED, ErrorCodes.TOKEN_EXPIRED_MSG)))
+            return Response.ok(g.toJson(new RestResponse(ErrorCodes.TOKEN_EXPIRED, ErrorCodes.TOKEN_EXPIRED_MSG)))
                     .build();
         }
 
 
         String role = tokenEntity.getString("role");
         if (!role.equals("ADMIN")) {
-            return Response.status(Status.UNAUTHORIZED)
-                    .entity(g.toJson(new RestResponse(ErrorCodes.UNAUTHORIZED, ErrorCodes.UNAUTHORIZED_MSG)))
+            return Response.ok(g.toJson(new RestResponse(ErrorCodes.UNAUTHORIZED, ErrorCodes.UNAUTHORIZED_MSG)))
                     .build();
         }
 
         String tokenUsername = tokenEntity.getString("username");
         if (tokenUsername.equals(request.input.username)) {
-            return Response.status(Status.FORBIDDEN)
-                    .entity(g.toJson(new RestResponse(ErrorCodes.FORBIDDEN, ErrorCodes.FORBIDDEN_MSG)))
+            return Response.ok(g.toJson(new RestResponse(ErrorCodes.FORBIDDEN, ErrorCodes.FORBIDDEN_MSG)))
                     .build();
         }
 
@@ -90,8 +85,7 @@ public class DeleteAccountResource {
 
             if (user == null) {
                 txn.rollback();
-                return Response.status(Status.NOT_FOUND)
-                        .entity(g.toJson(new RestResponse(ErrorCodes.USER_NOT_FOUND, ErrorCodes.USER_NOT_FOUND_MSG)))
+                return Response.ok(g.toJson(new RestResponse(ErrorCodes.USER_NOT_FOUND, ErrorCodes.USER_NOT_FOUND_MSG)))
                         .build();
             }
 

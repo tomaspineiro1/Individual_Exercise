@@ -45,7 +45,7 @@ public class CreateAccountResource {
         LOG.fine("Attempt to register user: " + request.input.username);
 
         if(!request.input.validRegistration())
-            return Response.status(Response.Status.BAD_REQUEST).entity(g.toJson(new RestResponse(ErrorCodes.INVALID_INPUT, ErrorCodes.INVALID_INPUT_MSG)))
+            return Response.ok(g.toJson(new RestResponse(ErrorCodes.INVALID_INPUT, ErrorCodes.INVALID_INPUT_MSG)))
                     .build();
 
         Transaction txn = null;
@@ -56,7 +56,7 @@ public class CreateAccountResource {
 
             if(user != null) {
                 txn.rollback();
-                return Response.status(Response.Status.CONFLICT).entity(g.toJson(new RestResponse(ErrorCodes.USER_ALREADY_EXISTS, ErrorCodes.USER_ALREADY_EXISTS_MSG)))
+                return Response.ok(g.toJson(new RestResponse(ErrorCodes.USER_ALREADY_EXISTS, ErrorCodes.USER_ALREADY_EXISTS_MSG)))
                         .build();
             }
             else {
