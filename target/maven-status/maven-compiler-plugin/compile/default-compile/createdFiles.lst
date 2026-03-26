@@ -1,3 +1,4 @@
+pt\unl\fct\di\adc\firstwebapp\resources\ShowAuthSessionsResource.class
 pt\unl\fct\di\adc\firstwebapp\util\DeleteAccountData.class
 pt\unl\fct\di\adc\firstwebapp\resources\LoginResource.class
 pt\unl\fct\di\adc\firstwebapp\resources\CreateAccountResource.class
@@ -11,6 +12,7 @@ pt\unl\fct\di\adc\firstwebapp\resources\MediaResource$1.class
 pt\unl\fct\di\adc\firstwebapp\util\ErrorCodes.class
 pt\unl\fct\di\adc\firstwebapp\util\ModifyAccountData.class
 pt\unl\fct\di\adc\firstwebapp\resources\ModifyAccountResource.class
+pt\unl\fct\di\adc\firstwebapp\util\ShowAuthSessionsRequest.class
 pt\unl\fct\di\adc\firstwebapp\util\CreateAccountRequest.class
 pt\unl\fct\di\adc\firstwebapp\resources\DeleteAccountResource.class
 pt\unl\fct\di\adc\firstwebapp\util\ShowUsersRequest.class
