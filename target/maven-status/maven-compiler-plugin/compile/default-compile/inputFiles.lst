@@ -4,6 +4,7 @@ C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\resources\CreateAccountResource.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\resources\DeleteAccountResource.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\resources\LoginResource.java
+C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\resources\LogoutResource.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\resources\MediaResource.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\resources\ModifyAccountResource.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\resources\ShowAuthSessionsResource.java
@@ -20,6 +21,8 @@ C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\util\ErrorCodes.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\util\LoginData.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\util\LoginRequestData.java
+C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\util\LogoutData.java
+C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\util\LogoutRequest.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\util\ModifyAccountData.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\util\ModifyAccountRequest.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\util\RegisterData.java

@@ -1,3 +1,4 @@
+pt\unl\fct\di\adc\firstwebapp\resources\LogoutResource.class
 pt\unl\fct\di\adc\firstwebapp\util\ShowUserRoleRequest.class
 pt\unl\fct\di\adc\firstwebapp\resources\LoginResource.class
 pt\unl\fct\di\adc\firstwebapp\util\ChangeUserPasswordData.class
@@ -17,6 +18,7 @@ pt\unl\fct\di\adc\firstwebapp\resources\ShowAuthSessionsResource.class
 pt\unl\fct\di\adc\firstwebapp\util\DeleteAccountData.class
 pt\unl\fct\di\adc\firstwebapp\resources\CreateAccountResource.class
 pt\unl\fct\di\adc\firstwebapp\resources\MediaResource.class
+pt\unl\fct\di\adc\firstwebapp\util\LogoutRequest.class
 pt\unl\fct\di\adc\firstwebapp\util\ModifyAccountRequest.class
 pt\unl\fct\di\adc\firstwebapp\util\RegisterData.class
 pt\unl\fct\di\adc\firstwebapp\util\RestResponse.class
@@ -27,5 +29,6 @@ pt\unl\fct\di\adc\firstwebapp\resources\DeleteAccountResource.class
 pt\unl\fct\di\adc\firstwebapp\util\ShowUserRoleData.class
 pt\unl\fct\di\adc\firstwebapp\util\ChangeUserPasswordRequest.class
 pt\unl\fct\di\adc\firstwebapp\util\LoginRequestData.class
+pt\unl\fct\di\adc\firstwebapp\util\LogoutData.class
 pt\unl\fct\di\adc\firstwebapp\resources\ComputationResource.class
 pt\unl\fct\di\adc\firstwebapp\util\ChangeUserRoleData.class
