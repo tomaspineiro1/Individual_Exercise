@@ -1,3 +1,4 @@
+C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\resources\ChangeUserPasswordResource.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\resources\ChangeUserRoleResource.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\resources\ComputationResource.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\resources\CreateAccountResource.java
@@ -9,6 +10,8 @@ C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\resources\ShowUserRoleResource.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\resources\ShowUsersResource.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\util\AuthToken.java
+C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\util\ChangeUserPasswordData.java
+C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\util\ChangeUserPasswordRequest.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\util\ChangeUserRoleData.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\util\ChangeUserRoleRequest.java
 C:\Users\fresc\Desktop\NOVA_FCT\ADC\Individual_Exercise\Individual_Exercise\src\main\java\pt\unl\fct\di\adc\firstwebapp\util\CreateAccountRequest.java
