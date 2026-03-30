@@ -74,15 +74,20 @@ public class LogoutResource {
 
         Transaction txn = datastore.newTransaction();
         try {
-            Query<Entity> tokenQuery = Query.newEntityQueryBuilder()
-                    .setKind("Token")
-                    .build();
-            QueryResults<Entity> tokens = datastore.run(tokenQuery);
-            tokens.forEachRemaining(token -> {
-                if (token.getString("username").equals(request.input.username)) {
-                    datastore.delete(token.getKey());
-                }
-            });
+            if (tokenRole.equals("ADMIN") && !tokenUsername.equals(request.input.username)) {
+                Query<Entity> tokenQuery = Query.newEntityQueryBuilder()
+                        .setKind("Token")
+                        .build();
+                QueryResults<Entity> tokens = txn.run(tokenQuery);
+                tokens.forEachRemaining(token -> {
+                    if (token.getString("username").equals(request.input.username)) {
+                        txn.delete(token.getKey());
+                    }
+                });
+            }else{
+                txn.delete(tokenKey);
+            }
+            txn.commit();
 
             LOG.info("Logout successful: " + request.input.username);
 
