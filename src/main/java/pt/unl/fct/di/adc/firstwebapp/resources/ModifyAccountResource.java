@@ -85,8 +85,9 @@ public class ModifyAccountResource {
         }
 
 
-        if ((request.input.phone == null || request.input.phone.isBlank()) &&
-                (request.input.address == null || request.input.address.isBlank())) {
+        if (request.input.attributes == null ||
+                (request.input.attributes.phone == null || request.input.attributes.phone.isBlank()) &&
+                        (request.input.attributes.address == null || request.input.attributes.address.isBlank())) {
             return Response.ok(g.toJson(new RestResponse(ErrorCodes.INVALID_INPUT, ErrorCodes.INVALID_INPUT_MSG)))
                     .build();
         }
@@ -104,11 +105,11 @@ public class ModifyAccountResource {
             }
 
             Entity.Builder userBuilder = Entity.newBuilder(user);
-            if (request.input.phone != null && !request.input.phone.isBlank()) {
-                userBuilder.set("user_phone", request.input.phone);
+            if (request.input.attributes.phone != null && !request.input.attributes.phone.isBlank()) {
+                userBuilder.set("user_phone", request.input.attributes.phone);
             }
-            if (request.input.address != null && !request.input.address.isBlank()) {
-                userBuilder.set("user_address", request.input.address);
+            if (request.input.attributes.address != null && !request.input.attributes.address.isBlank()) {
+                userBuilder.set("user_address", request.input.attributes.address);
             }
 
             txn.put(userBuilder.build());

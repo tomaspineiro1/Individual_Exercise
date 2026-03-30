@@ -103,18 +103,18 @@ public class ChangeUserRoleResource {
                     .set("user_role", request.input.newRole)
                     .build();
 
-            txn.put(updatedUser);
-            txn.commit();
-
             Query<Entity> tokenQuery = Query.newEntityQueryBuilder()
                     .setKind("Token")
                     .build();
-            QueryResults<Entity> tokens = datastore.run(tokenQuery);
+            QueryResults<Entity> tokens = txn.run(tokenQuery);
             tokens.forEachRemaining(token -> {
                 if (token.getString("username").equals(request.input.username)) {
-                    datastore.delete(token.getKey());
+                    txn.delete(token.getKey());
                 }
             });
+
+            txn.put(updatedUser);
+            txn.commit();
 
             LOG.info("Role changed for: " + request.input.username);
 
