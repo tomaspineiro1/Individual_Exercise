@@ -1,0 +1,16 @@
+// Google Cloud
+gcloud auth login
+gcloud config set project <your-proj-id>
+
+// Compila e empacota o projeto
+mvn clean package
+
+// Deploy
+mvn appengine:deploy "-Dapp.deploy.projectId=<your-proj-id>" "-Dapp.deploy.version=<version-number>"
+
+// Inicia o servidor local do App Engine
+mvn appengine:run
+
+// Link
+https://part1-adc.uc.r.appspot.com/
+
