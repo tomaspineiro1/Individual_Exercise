@@ -75,7 +75,7 @@ public class ChangeUserPasswordResource {
 
         String tokenUsername = tokenEntity.getString("username");
         if (!tokenUsername.equals(request.input.username)) {
-            return Response.ok(g.toJson(new RestResponse(ErrorCodes.FORBIDDEN, ErrorCodes.FORBIDDEN_MSG)))
+            return Response.ok(g.toJson(new RestResponse(ErrorCodes.UNAUTHORIZED, ErrorCodes.UNAUTHORIZED_MSG)))
                     .build();
         }
 
