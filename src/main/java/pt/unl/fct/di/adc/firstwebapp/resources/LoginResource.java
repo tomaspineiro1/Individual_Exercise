@@ -70,11 +70,6 @@ public class LoginResource {
 					.build();
 		}
 
-		// Generate automatically a key
-		Key logKey = datastore.allocateId(
-				datastore.newKeyFactory()
-						.addAncestors(PathElement.of("User", request.input.username))
-						.setKind("UserLog").newKey());
 
 		Transaction txn = datastore.newTransaction();
 		try {
@@ -96,10 +91,6 @@ public class LoginResource {
 				return Response.ok(g.toJson(new RestResponse(ErrorCodes.INVALID_CREDENTIALS, ErrorCodes.INVALID_CREDENTIALS_MSG)))
 						.build();
 			}
-				// Login successful
-				Entity log = Entity.newBuilder(logKey)
-						.set("user_login_time", Timestamp.now())
-						.build();
 
 			String role = user.getString("user_role");
 			AuthToken token = new AuthToken(request.input.username, role);
@@ -113,7 +104,7 @@ public class LoginResource {
 					.set("expiresAt", token.expiresAt)
 					.build();
 
-			txn.put(log, tokenEntity);
+			txn.put(tokenEntity);
 			txn.commit();
 
 			LOG.info("Login successful: " + request.input.username);
