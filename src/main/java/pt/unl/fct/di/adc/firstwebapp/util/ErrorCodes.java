@@ -19,5 +19,5 @@ public class ErrorCodes {
     public static final String UNAUTHORIZED_MSG        = "The operation is not allowed for the user role";
     public static final String INVALID_INPUT_MSG       = "The call is using input data not following the correct specification";
     public static final String FORBIDDEN_MSG           = "The operation generated a forbidden error by other reason";
-    public static final String INTERNAL_ERROR_MSG      = "Error registering user";
+    public static final String INTERNAL_ERROR_MSG      = "An internal error occurred";
 }

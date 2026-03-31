@@ -77,7 +77,6 @@ public class LoginResource {
 			Entity user = txn.get(userKey);
 			if (user == null) {
 				txn.rollback();
-				// Username does not exist
 				LOG.warning("User not found: " + request.input.username);
 				return Response.ok(g.toJson(new RestResponse(ErrorCodes.USER_NOT_FOUND, ErrorCodes.USER_NOT_FOUND_MSG)))
 						.build();

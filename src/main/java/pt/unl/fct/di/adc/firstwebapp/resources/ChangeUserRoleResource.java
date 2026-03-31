@@ -81,13 +81,6 @@ public class ChangeUserRoleResource {
         }
 
 
-        String tokenUsername = tokenEntity.getString("username");
-        if (tokenUsername.equals(request.input.username)) {
-            return Response.ok(g.toJson(new RestResponse(ErrorCodes.FORBIDDEN, ErrorCodes.FORBIDDEN_MSG)))
-                    .build();
-        }
-
-
         Transaction txn = datastore.newTransaction();
         try {
             Key userKey = userKeyFactory.newKey(request.input.username);
